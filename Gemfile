@@ -38,12 +38,17 @@ end
 #gem 'carrierwave'
 gem 'simple_form'
 gem 'bootstrap-sass'
-gem 'haml-rails'
+gem 'haml'
 gem 'devise'
 
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
+end
+
+group :prodaction do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
 end
 
 #gem 'protected_attributes'

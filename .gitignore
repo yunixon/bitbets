@@ -20,3 +20,9 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
