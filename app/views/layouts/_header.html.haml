@@ -30,24 +30,27 @@
                   %li
                     = link_to "Affiliate program", affiliate_path
             %ul.nav.pull-right
-              %li
-                = link_to "Login", signin_path
-              %li.divider-vertical
-              %li.dropdown
-                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  Account
-                  %strong.caret
-                %ul.dropdown-menu
-                  
-                  %li
-                    = link_to "Balance", '#'
-                  %li
-                    = link_to "Profile", current_user
-                  %li
-                    = link_to "Bets", '#'
-                  %li.divider
-                  %li
-                    = link_to "Logout", signout_path, method: "delete"
+              - if signed_in?
+                %li
+                  = link_to "Users", users_path
+                %li.divider-vertical
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                    Account
+                    %strong.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to "Balance", '#'
+                    %li
+                      = link_to "Profile", current_user
+                    %li
+                      = link_to "Bets", '#'
+                    %li.divider
+                    %li
+                      = link_to "Logout", signout_path, method: "delete"
+              - else
+                %li
+                  = link_to "Login", signin_path
       .row-fluid
         .span12
           #tabs-161975.tabbable
