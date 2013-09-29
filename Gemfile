@@ -42,7 +42,7 @@ end
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'haml'
-gem 'devise'
+#gem 'devise'
 
 group :test do
   gem 'selenium-webdriver'

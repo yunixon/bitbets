@@ -1,4 +1,5 @@
 Bitbats::Application.routes.draw do
+  get "users/new"
   match "/home",      to: 'pages#home',      via: 'get'
   match '/help',      to: 'pages#help',      via: 'get'
   match '/about',     to: 'pages#about',     via: 'get'
