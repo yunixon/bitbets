@@ -1,7 +1,11 @@
 Bitbats::Application.routes.draw do
-  get "pages/home"
-  get "pages/help"
-  get "pages/about"
+  match "/home",      to: 'pages#home',      via: 'get'
+  match '/help',      to: 'pages#help',      via: 'get'
+  match '/about',     to: 'pages#about',     via: 'get'
+  match '/tutorial',  to: 'pages#tutorial',  via: 'get'
+  match '/faq',       to: 'pages#faq',       via: 'get'
+  match '/history',   to: 'pages#history',   via: 'get'
+  match '/affiliate', to: 'pages#affiliate', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
