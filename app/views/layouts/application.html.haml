@@ -1,0 +1,83 @@
+!!!
+%html
+  %head>
+    %title Bitbats | #{yield(:title)}
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      .row-fluid
+      .span12
+        .navbar.navbar-inverse
+          .navbar-inner
+            .container-fluid
+              %a.btn.btn-navbar{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse"}
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              %a.brand{href: root_path} Bit-bets.org
+              .nav-collapse.collapse.navbar-responsive-collapse
+                %ul.nav
+                  %li.active
+                    = link_to "Home", home_path 
+                  %li
+                    = link_to "History", history_path
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      Help
+                      %strong.caret
+                    %ul.dropdown-menu
+                      %li
+                        = link_to "Tutorial", tutorial_path
+                      %li
+                        = link_to "FAQ", faq_path
+                      %li
+                        = link_to "About", about_path
+                      %li.divider                    
+                      %li
+                        = link_to "Affiliate program", affiliate_path
+                %ul.nav.pull-right
+                  %li
+                    %a{href: "#"} Login
+                  %li.divider-vertical
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      Account
+                      %strong.caret
+                  -#  
+                    %ul.dropdown-menu
+                      %li
+                        = link_to "Balance", balance_path
+                      %li
+                        = link_to "Profile", profile_path
+                      %li
+                        = link_to "Bets", bets_path
+                      %li.divider
+                      %li
+                        = link_to "Logout", logout_path
+          .row-fluid
+            .span12
+              #tabs-161975.tabbable
+                %ul.nav.nav-tabs
+                  %li.active
+                    %a{"data-toggle" => "tab", href: "#panel-431189"} Sport
+                  %li
+                    %a{"data-toggle" => "tab", href: "#panel-729913"} Other
+                .tab-content
+                  #panel-431189.tab-pane.active
+                    %p
+                      Sport events
+                  #panel-729913.tab-pane
+                    %p
+                      Other events
+              %span.label Name event:
+              .row-fluid
+                .span4
+                  %a.btn{href: "#", type: "button"} First win
+                .span4
+                  %button.btn{type: "button"} Drawn bet
+                .span4
+                  %button.btn{type: "button"} Second win
+    .container-fluid
+      = yield
