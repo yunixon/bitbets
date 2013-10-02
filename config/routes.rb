@@ -1,12 +1,22 @@
 Bitbats::Application.routes.draw do
-  get "users/new"
-  match "/home",      to: 'pages#home',      via: 'get'
-  match '/help',      to: 'pages#help',      via: 'get'
-  match '/about',     to: 'pages#about',     via: 'get'
-  match '/tutorial',  to: 'pages#tutorial',  via: 'get'
-  match '/faq',       to: 'pages#faq',       via: 'get'
-  match '/history',   to: 'pages#history',   via: 'get'
-  match '/affiliate', to: 'pages#affiliate', via: 'get'
+  
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match "/home",      to: 'pages#home',       via: 'get'
+  match '/help',      to: 'pages#help',       via: 'get'
+  match '/about',     to: 'pages#about',      via: 'get'
+  match '/tutorial',  to: 'pages#tutorial',   via: 'get'
+  match '/faq',       to: 'pages#faq',        via: 'get'
+  match '/history',   to: 'pages#history',    via: 'get'
+  match '/affiliate', to: 'pages#affiliate',  via: 'get'
+
+  match '/signup',    to: 'users#new',        via: 'get'
+  match '/signin',    to: 'sessions#new',     via: 'get'
+  match '/signout',   to: 'sessions#destroy', via: 'delete'
+  
+  #match '/registration', to: 'users/new',    via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

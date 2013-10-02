@@ -42,6 +42,7 @@ end
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'haml'
+gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'devise'
 
 group :test do
