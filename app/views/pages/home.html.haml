@@ -1,3 +1,24 @@
 = provide(:title, 'Home')
-
-%h1 Page#home
+.row-fluid
+  .span12
+    #tabs-161975.tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", href: "#panel-431189"} Sport
+        %li
+          %a{"data-toggle" => "tab", href: "#panel-729913"} Other
+      .tab-content
+        #panel-431189.tab-pane.active
+          %p
+            Sport events
+        #panel-729913.tab-pane
+          %p
+            Other events
+    %span.label Name event:
+    .row-fluid
+      .span4
+        %a.btn{href: "#", type: "button"} First win
+      .span4
+        %button.btn{type: "button"} Drawn bet
+      .span4
+        %button.btn{type: "button"} Second win

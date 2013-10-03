@@ -1,12 +1,7 @@
 - provide(:title, 'Sign up')
 %h1 Registration
-
 .row
   .span6.offset3
     = simple_form_for(@user) do |f|
-      = render 'shared/error_messages'
-      = f.input :name
-      = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
+      = render 'form', f: f
       = f.submit "Registration", class: "btn btn-large btn-primary"

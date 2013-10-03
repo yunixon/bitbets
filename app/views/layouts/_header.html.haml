@@ -1,76 +1,53 @@
-.container-fluid
-  .row-fluid
-  .span12
-    .navbar.navbar-inverse
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand{href: root_path} Bit-bets.org
-          .nav-collapse.collapse.navbar-responsive-collapse
-            %ul.nav
-              %li.active
-                = link_to "Home", home_path 
+.navbar.navbar
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{href: root_path} Bit-bets.org
+      .nav-collapse.collapse.navbar-responsive-collapse
+        %ul.nav
+          %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
+          %li{:class => "#{'active' if current_page?(history_path)}"}=link_to "History", history_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Help
+              %strong.caret
+            %ul.dropdown-menu
               %li
-                = link_to "History", history_path
+                = link_to "Tutorial", tutorial_path
+              %li
+                = link_to "FAQ", faq_path
+              %li
+                = link_to "About", about_path
+              %li.divider                    
+              %li
+                = link_to "Affiliate program", affiliate_path
+        %ul.nav.pull-right
+          - if signed_in?
+            - if current_user.admin?
+              %li{:class => "#{'active' if current_page?(users_path)}"}=link_to "Users", users_path
+              %li
+                = link_to "Logout", signout_path, method: "delete"
+            - else
+              %li
+                =link_to current_user.name.to_s, '#'
+              %li.divider-vertical
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  Help
+                  Account
                   %strong.caret
                 %ul.dropdown-menu
                   %li
-                    = link_to "Tutorial", tutorial_path
+                    = link_to "Balance", '#'
                   %li
-                    = link_to "FAQ", faq_path
+                    = link_to "Profile", edit_user_path(current_user)
                   %li
-                    = link_to "About", about_path
-                  %li.divider                    
+                    = link_to "Bets", '#'
+                  %li.divider
                   %li
-                    = link_to "Affiliate program", affiliate_path
-            %ul.nav.pull-right
-              - if signed_in?
-                %li
-                  = link_to "Users", users_path
-                %li.divider-vertical
-                %li.dropdown
-                  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                    Account
-                    %strong.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to "Balance", '#'
-                    %li
-                      = link_to "Profile", current_user
-                    %li
-                      = link_to "Bets", '#'
-                    %li.divider
-                    %li
-                      = link_to "Logout", signout_path, method: "delete"
-              - else
-                %li
-                  = link_to "Login", signin_path
-      .row-fluid
-        .span12
-          #tabs-161975.tabbable
-            %ul.nav.nav-tabs
-              %li.active
-                %a{"data-toggle" => "tab", href: "#panel-431189"} Sport
-              %li
-                %a{"data-toggle" => "tab", href: "#panel-729913"} Other
-            .tab-content
-              #panel-431189.tab-pane.active
-                %p
-                  Sport events
-              #panel-729913.tab-pane
-                %p
-                  Other events
-          %span.label Name event:
-          .row-fluid
-            .span4
-              %a.btn{href: "#", type: "button"} First win
-            .span4
-              %button.btn{type: "button"} Drawn bet
-            .span4
-              %button.btn{type: "button"} Second win
+                    = link_to "Logout", signout_path, method: "delete"
+          - else
+            %li{:class => "#{'active' if current_page?(signin_path)}"}=link_to "Login", signin_path
+            %li{:class => "#{'active' if current_page?(signup_path)}"}=link_to "Registration", signup_path
