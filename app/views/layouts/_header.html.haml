@@ -31,8 +31,7 @@
               %li
                 = link_to "Logout", signout_path, method: "delete"
             - else
-              %li
-                =link_to current_user.name.to_s, '#'
+              %li.navbar-text #{current_user.name.to_s}
               %li.divider-vertical
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
