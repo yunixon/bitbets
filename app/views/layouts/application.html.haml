@@ -5,12 +5,34 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
-    
+    :javascript
+      #{@t = Time.now};
+      function MyClock()
+      {
+        now_time= new Date();
+        var hours=now_time.getHours();
+        var minutes=now_time.getMinutes();
+        var seconds=now_time.getSeconds();
+        if (eval(hours)<10) hours="0" + hours;
+        if (eval(minutes)< 10) minutes="0" + minutes;
+        if (seconds< 10) seconds="0" + seconds;
+        now_time = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("clock").innerHTML = now_time;
+        var timer=setTimeout("MyClock()",1000);
+        document.write("Hi world");
+        $(document).ready(function(){
+          MyClock();
+        });
+      }
+  %body 
+    :javascript
+      MyClock();
     = render 'layouts/header'
-    
+    %p#clock
     .container-fluid
+      
       - flash.each do |key, value|
         %div{class: "alert alert-#{key}"}= value
       = yield
       = debug(params) if Rails.env.development?
+

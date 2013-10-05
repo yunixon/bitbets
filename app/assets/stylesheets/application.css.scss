@@ -14,10 +14,18 @@
 
 @import "bootstrap";
 
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Tahoma, Verdana, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
-  color: #ff0;
+  color: #c4a041;
   background-color: #122322 !important;
 }
 
@@ -54,13 +62,13 @@ h2 {
   background-color: #232323;
   border-right: 1px solid #000000;}
 .navbar .brand {
-  color: #ff0000;
-  text-shadow: 0 1px 0 white; }
+  color: #0000ff;
+  text-shadow: 0 1px 0 black; }
 .navbar-text {
-  color: #00ff00;
+  color: #00ffff;
   }
 .navbar-link {
-  color: #00ff00; }
+  color: #00ffff; }
 .navbar-link:hover, .navbar-link:focus {
   color: #33ff33; }
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
@@ -78,6 +86,15 @@ h2 {
   background-color: #232323;
   color: #00ff00; }
 
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+  color: #fff;
+  background-color: #232323;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default; }
+
 .dropdown-menu {
   background-color: #232323;}
 .dropdown-menu > li > a {color: #ffff00;}
@@ -87,14 +104,7 @@ h2 {
   background-color: #232323;}
 
 
-$grayMediumLight: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
+/* DEBUG */
 .debug_dump {
   color: #ff0;
   background-color: #232323;
@@ -170,3 +180,9 @@ aside {
     }
   }
 }
+
+.event_body {
+  background-color: #232323;
+  clear: both;
+  width: 100%;
+  @include box_sizing;}
