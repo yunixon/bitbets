@@ -1,0 +1,13 @@
+#BetModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  #{@user.bets.create(:event_id => @event, :win_type => 0, :sum => 1)}
+  = simple_form_for [@bet] do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3 Bet
+    .modal-body
+      %p Stack…
+      = render 'shared/error_messages', object: f.object
+      = f.input :sum
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
+      = f.button :submit, :class => "btn btn-primary"

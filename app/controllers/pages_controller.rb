@@ -3,6 +3,10 @@ class PagesController < ApplicationController
     @events = Event.where(complete: false)
     @bets = Bet.all
   end
+  
+  def history
+    @events = Event.where(complete: true)
+  end
 
   def help
   end
@@ -14,9 +18,6 @@ class PagesController < ApplicationController
   end
 
   def tutorial
-  end
-
-  def history
   end
 
   def affiliate

@@ -1,2 +1,19 @@
 = provide(:title, 'History')
-%h1 Pages#history
+.row-fluid
+  .span12
+    #tabs-161975.tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", href: "#panel-431189"} Sport
+        %li
+          %a{"data-toggle" => "tab", href: "#panel-729913"} Other
+      .tab-content
+        #panel-431189.tab-pane.active
+          %p
+            Sport events
+          = render @events, etype: 1
+        #panel-729913.tab-pane
+          %p
+            Other events
+          = render @events, etype: 2 || "No events..."
+        

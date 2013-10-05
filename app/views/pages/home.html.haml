@@ -11,9 +11,9 @@
         #panel-431189.tab-pane.active
           %p
             Sport events
-          = render "eventsbody", etype: 1
+          = render @events, etype: 1
         #panel-729913.tab-pane
           %p
             Other events
-          = render "eventsbody", etype: 2
+          = render @events, etype: 2 || "No events..."
         
