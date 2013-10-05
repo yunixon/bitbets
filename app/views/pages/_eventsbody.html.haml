@@ -1,8 +1,11 @@
-%span.label Name event:
-.row-fluid
-  .span4
-    %button.btn.btn-inverse{type: "button"} First win
-  .span4
-    %button.btn.btn-inverse{type: "button"} Drawn bet
-  .span4
-    %button.btn.btn-inverse{type: "button"} Second win
+- @events.each do |event|
+  - if event.event_type == etype 
+    .label #{event.name}:    
+    .events
+      <br/>#{event.first_side} vs #{event.second_side} at: #{event.date_start} #{event.time_start}<br/><br/> 
+      .span2
+        %button.btn.btn-inverse{type: "button"} #{event.first_side} win
+      .span2
+        %button.btn.btn-inverse{type: "button"} Drawn bet
+      .span2
+        %button.btn.btn-inverse{type: "button"} #{event.second_side} win
