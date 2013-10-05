@@ -14,17 +14,23 @@
                 %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.first_side}
             .span4
               %center
-                %button.btn.btn-small.btn-inverse.btn-block{type: "button"} Drawn bet
+                %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} Drawn bet
             .span4  
               %center
-                %button.btn.btn-small.btn-inverse.btn-block{type: "button"} #{event.second_side}
+                %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 
 #BetModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-    %h3 Modal header
-  .modal-body
-    %p One fine body…
-  .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+  #{@bet = Bet.new}
+  #{@bet.user_id  = current_user.id}
+  #{@bet.event_id = @event.id}
+  = simple_form_for [@bet] do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3 Bet
+    .modal-body
+      %p Stack…
+      = render 'shared/error_messages', object: f.object
+      = f.input :sum
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
+      = f.button :submit, :class => "btn btn-primary"

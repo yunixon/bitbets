@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
+    @event = Event.find(params[:id])
     @events = Event.where(complete: false)
+    @bets = Bet.all
   end
 
   def help
