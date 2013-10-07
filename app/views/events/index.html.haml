@@ -1,0 +1,10 @@
+- provide(:title, 'All events')
+%h1 All events
+%ul.events
+  - @events.each do |event|
+    - if current_user != nil && current_user.admin?
+      %li
+        = link_to event.name, event
+        | #{link_to "delete", event, method: :delete, data: { confirm: "You sure?" }}
+    - else
+      - flash.now[:error] = "Access denied. Please login to admin"

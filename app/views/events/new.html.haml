@@ -1,0 +1,7 @@
+- provide(:title, 'Add event')
+%h1 Add event
+.row
+  .span6.offset3
+    = simple_form_for(@event) do |f|
+      = render 'event_form', f: f
+      = f.submit "Add", class: "btn btn-large btn-primary"

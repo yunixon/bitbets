@@ -2,6 +2,8 @@ Bitbats::Application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :events
+  resources :bets, only: [:create, :destroy]
 
   match "/home",      to: 'pages#home',       via: 'get'
   match '/help',      to: 'pages#help',       via: 'get'

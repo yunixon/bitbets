@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @bets = @user.bets
   end
   
   def create
@@ -50,13 +51,6 @@ private
   
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
-  end
-
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please login" unless signed_in?
-    end
   end
 
   def correct_user

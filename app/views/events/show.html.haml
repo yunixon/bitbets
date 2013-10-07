@@ -1,0 +1,23 @@
+- provide(:title, 'Event | #{@event.name}')
+
+.row
+  %aside.span4
+    %section
+      %h2
+        Event:
+      .event_body
+        ID: #{@event.id}<br/>
+        Name: #{@event.name}<br/>
+        Type: #{@event.event_type}<br/>
+        Time: #{@event.time_start}<br/>
+        First side: #{@event.first_side}<br/>
+        Second side: #{@event.second_side}<br/>
+        Complete: #{@event.complete}<br/>
+        Complete type: #{@event.complete_type}<br/>
+        Fact link: #{@event.fact_link}<br/>
+  .span8
+    - if @event.bets.any?
+      %h3
+        Bets: (#{@event.bets.count})
+      %h4
+        %ol.bets= render @bets

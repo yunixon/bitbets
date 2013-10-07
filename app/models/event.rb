@@ -1,8 +1,10 @@
 class Event < ActiveRecord::Base
   
-  validates: type, presence: true, length: {maximum: 120}
-  validates: name, presence: true, length: {maximum: 120}
+  validates :name,        presence: true
+  validates :first_side,  presence: true
+  validates :second_side, presence: true
 
-  has_many :bets
+  has_many :bets, dependent: :destroy #Delete bets with event 
+  default_scope -> { order('created_at DESC') } #New on top
 
 end
