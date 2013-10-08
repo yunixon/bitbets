@@ -1,11 +1,30 @@
 - @events.each do |event|
   - if event.event_type == etype 
-    .label #{event.name}:    
-    .events
-      <br/>#{event.first_side} vs #{event.second_side} at: #{event.date_start} #{event.time_start}<br/><br/> 
-      .span2
-        %button.btn.btn-inverse{type: "button"} #{event.first_side} win
-      .span2
-        %button.btn.btn-inverse{type: "button"} Drawn bet
-      .span2
-        %button.btn.btn-inverse{type: "button"} #{event.second_side} win
+    .row-fluid
+      .span6
+        .label #{event.name}:    
+      .span6
+        .label.right #{event.fact_link}
+      .row-fluid.events
+        .span12
+          #{event.dt_start} 
+          .row-fluid
+            .span4
+              %center
+                %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.first_side}
+            .span4
+              %center
+                %button.btn.btn-small.btn-inverse.btn-block{type: "button"} Drawn bet
+            .span4  
+              %center
+                %button.btn.btn-small.btn-inverse.btn-block{type: "button"} #{event.second_side}
+
+#BetModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3 Modal header
+  .modal-body
+    %p One fine body…
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes

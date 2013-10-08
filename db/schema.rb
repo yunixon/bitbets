@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007103756) do
+ActiveRecord::Schema.define(version: 20131008044047) do
 
   create_table "bets", force: true do |t|
     t.integer  "event_id"
@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 20131007103756) do
     t.integer  "event_type"
     t.string   "first_side"
     t.string   "second_side"
-    t.time     "time_start"
-    t.date     "date_start"
+    t.datetime "dt_start"
   end
 
   create_table "users", force: true do |t|
