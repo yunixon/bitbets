@@ -11,6 +11,8 @@
           .row-fluid
             .span4
               %center
+                = button_to ("NEW", :action => "new", :controller => "bets")
+              -#  
                 %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.first_side}
             .span4
               %center
@@ -19,18 +21,3 @@
               %center
                 %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 
-#BetModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  #{@bet = Bet.new}
-  #{@bet.user_id  = current_user.id}
-  #{@bet.event_id = @event.id}
-  = simple_form_for [@bet] do |f|
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3 Bet
-    .modal-body
-      %p Stack…
-      = render 'shared/error_messages', object: f.object
-      = f.input :sum
-    .modal-footer
-      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
-      = f.button :submit, :class => "btn btn-primary"

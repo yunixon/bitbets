@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
-  has_many :bets, dependent: :destroy #delete bets with user
+  has_many :bets
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
