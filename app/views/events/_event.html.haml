@@ -10,6 +10,8 @@
         .row-fluid
           .span4
             %center
+              = link_to "New bet", new_event_bet_path(event)
+            -#
               %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.first_side}
           .span4
             %center

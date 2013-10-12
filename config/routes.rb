@@ -1,10 +1,15 @@
 Bitbats::Application.routes.draw do
   
+  # You can have the root of your site routed with "root"
+  root 'pages#home'
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :events
-  resources :bets, only: [:create, :destroy]
-
+  
+  resources :events do
+    resources :bets, only: [:new, :create, :destroy]
+  end
+  
   match "/home",      to: 'pages#home',       via: 'get'
   match '/help',      to: 'pages#help',       via: 'get'
   match '/about',     to: 'pages#about',      via: 'get'
@@ -22,8 +27,6 @@ Bitbats::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'pages#home'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
