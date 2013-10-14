@@ -4,4 +4,8 @@
   .span6.offset3
     = simple_form_for(@event) do |f|
       = render 'event_form', f: f
-      = f.submit "Add", class: "btn btn-large btn-primary"
+      = f.submit "Add", class: "btn btn-primary"
+
+    %br/
+    %br/
+    = link_to '< back to home', "/", class: 'btn btn-info'

@@ -1,3 +1,4 @@
-%span.content= @bet.user_id + " " + @bet.event_id
+%span.content
+  = bet.user_id.to_s + " : " + bet.sum.to_s
 %span.timestamp
   Stacked: #{time_ago_in_words(bet.created_at)} ago.

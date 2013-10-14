@@ -1,4 +1,7 @@
 = render 'shared/error_messages', object: f.object
-= f.input :type
+= f.input :event_type
 = f.input :name
-= f.input :fact_link 
+= f.input :fact_link
+= f.input :first_side
+= f.input :second_side
+= f.input :dt_start, :default => Time.now

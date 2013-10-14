@@ -6,10 +6,14 @@
       %h2
         Event:
       .event_body
+        - if current_user != nil && current_user.admin?
+          %p
+            = link_to "Edit event", edit_event_path
+        
         ID: #{@event.id}<br/>
         Name: #{@event.name}<br/>
         Type: #{@event.event_type}<br/>
-        Time: #{@event.time_start}<br/>
+        Time: #{@event.dt_start}<br/>
         First side: #{@event.first_side}<br/>
         Second side: #{@event.second_side}<br/>
         Complete: #{@event.complete}<br/>
@@ -17,7 +21,7 @@
         Fact link: #{@event.fact_link}<br/>
   .span8
     - if @event.bets.any?
-      %h3
+      %h2
         Bets: (#{@event.bets.count})
-      %h4
+      %p
         %ol.bets= render @bets

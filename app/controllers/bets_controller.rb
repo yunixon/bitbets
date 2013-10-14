@@ -1,18 +1,17 @@
 class BetsController < ApplicationController
 
   before_action :signed_in_user
-  
+  before_action :set_event
+
   def new
-    @event = Event.find(params[:event_id])
     @bet = @event.bets.build
   end
   
   def create
-    @event = Event.find(params[:event_id])
-    @bet = @event.bets.build(params[bet_params])
-    @bet.win_type = 1
+    @bet = @event.bets.build(bet_params)
     @bet.user_id = current_user.id
-    
+    bet_setup(@bet)
+
     if @bet.save
       flash.now[:success] = "Bet is added!"
       redirect_to root_url
@@ -27,9 +26,17 @@ class BetsController < ApplicationController
 
   
 private
-  
+ 
+  def bet_setup
+    
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
   def bet_params
-    params.require(:bet).permit(:event_id, :win_type, :sum)
+    params.require(:bet).permit(:win_type, :sum)
   end
 
 end
