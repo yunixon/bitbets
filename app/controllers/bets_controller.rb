@@ -4,19 +4,22 @@ class BetsController < ApplicationController
   before_action :set_event
 
   def new
-    @bet = @event.bets.build
+    if @event.complete == false
+      @bet = @event.bets.build
+    else
+      flash[:error] = "Event is completed"
+      redirect_to :back
+    end
   end
   
   def create
-    @bet = @event.bets.build(bet_params)
+    @bet =  @event.bets.build(bet_params) 
     @bet.user_id = current_user.id
-    bet_setup(@bet)
-
     if @bet.save
       flash.now[:success] = "Bet is added!"
       redirect_to root_url
     else
-      render 'new'
+      render "new"
     end
     
   end
@@ -27,10 +30,6 @@ class BetsController < ApplicationController
   
 private
  
-  def bet_setup
-    
-  end
-
   def set_event
     @event = Event.find(params[:event_id])
   end

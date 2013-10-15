@@ -9,14 +9,11 @@
         #{event.dt_start} 
         .row-fluid
           .span4
-            %center
-              = link_to "New bet", new_event_bet_path(event)
-            -#
-              %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.first_side}
+            = link_to event.first_side, new_event_bet_path(event, :wt => 1), :class => "btn btn-small btn-inverse btn-block"
           .span4
-            %center
-              %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "bets/betmodal#BetModal", role: "button"} Drawn bet
+            = link_to "Drawn bet", new_event_bet_path(event, :wt => 0), :class => "btn btn-small btn-inverse btn-block"
           .span4  
-            %center
+            = link_to event.second_side, new_event_bet_path(event, :wt => 2), :class => "btn btn-small btn-inverse btn-block"
+            -#  
               %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 

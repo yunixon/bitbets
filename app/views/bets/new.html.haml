@@ -1,5 +1,13 @@
-#BetModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+- if @event.complete == false
+  = provide(:title, "New bet")
+  %h3
+    New bet on #{@event.name} - #{@event.first_side} vs #{@event.second_side}
   = simple_form_for ([@event, @bet]) do |f|
     = render 'shared/error_messages', object: f.object
+    = f.hidden_field :win_type, :value => params[:wt]
+    -#
+      = f.input :win_type, :default => params[:wt]
     = f.input :sum
     = f.submit "Add", class: "btn btn-primary"
+- else
+  - flash.now[:error] = "Event is complited"

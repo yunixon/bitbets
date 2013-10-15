@@ -1,4 +1,4 @@
-- provide(:title, 'Event | #{@event.name}')
+- provide(:title, "Event | #{@event.name}")
 
 .row
   %aside.span4
@@ -9,7 +9,6 @@
         - if current_user != nil && current_user.admin?
           %p
             = link_to "Edit event", edit_event_path
-        
         ID: #{@event.id}<br/>
         Name: #{@event.name}<br/>
         Type: #{@event.event_type}<br/>
@@ -24,4 +23,5 @@
       %h2
         Bets: (#{@event.bets.count})
       %p
-        %ol.bets= render @bets
+        %ol.bets
+          = render @bets

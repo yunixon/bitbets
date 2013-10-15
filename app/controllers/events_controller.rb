@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    event_setup(@event)
     if @event.save
       flash[:success] = "Event added!"
       redirect_to @event
@@ -31,6 +32,8 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    
     if @event.update_attributes(event_params)
       flash[:success] = "Event updated"
       redirect_to @event
@@ -46,7 +49,13 @@ class EventsController < ApplicationController
   end
 
 private
-  
+ 
+  def event_setup(the_event)
+    if the_event[:complete] == nil
+      the_event[:complete] = false
+    end
+  end
+
   def event_params
     params.require(:event).permit(:event_type, :name, :fact_link, :first_side, :second_side, :dt_start)
   end
