@@ -8,7 +8,7 @@ class BetsController < ApplicationController
       @bet = @event.bets.build
     else
       flash[:error] = "Event is completed"
-      redirect_to :back
+      redirect_to history_path
     end
   end
   

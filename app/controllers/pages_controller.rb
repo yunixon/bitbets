@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @events = Event.where(complete: false)
-    #@bets_first_sum = Bet.where()
+    #@bets_first_sum = Bet.where("event_id = ?", @event.id)
   end
   
   def history
