@@ -16,7 +16,7 @@ class BetsController < ApplicationController
     @bet =  @event.bets.build(bet_params) 
     @bet.user_id = current_user.id
     if @bet.save
-      flash.now[:success] = "Bet is added!"
+      flash[:success] = "Bet is added!"
       redirect_to root_url
     else
       render "new"
