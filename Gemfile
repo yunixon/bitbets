@@ -51,6 +51,7 @@ group :test do
 end
 
 group :prodaction do
+  gem 'thin'
   gem 'pg'
   gem 'rails_12factor'
 end
