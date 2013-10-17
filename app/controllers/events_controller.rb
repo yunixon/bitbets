@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :signed_in_user, only: [:edit, :update]
+  before_action :signed_in_admin, only: [:index, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -53,6 +53,29 @@ private
   def event_setup(the_event)
     if the_event[:complete] == nil
       the_event[:complete] = false
+    end
+  end
+
+  def signed_in_admin 
+    if signed_in?
+      if current_user.admin
+        flash.now[:success] = "You are welcome mr. ADMIN"
+      else
+        flash[:error] = "Access denied. Please login to admin"
+        redirect_to root_url
+      end
+    else
+      flash[:error] = "Access denied. Please login"
+      store_location
+      redirect_to signin_url
+    end
+  end
+  
+  def complete(the_event)
+    if the_event[:complete] == false
+      the_event[:complete] = true
+    else
+      flash[error] = "Event has already been comleted"
     end
   end
 

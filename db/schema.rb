@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20131006145330) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "event_type"
+    t.integer  "event_type"
     t.string   "name"
     t.string   "first_side"
     t.string   "second_side"

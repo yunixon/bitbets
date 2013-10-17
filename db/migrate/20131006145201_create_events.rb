@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.string :event_type
+      t.integer :event_type
       t.string :name
       t.string :first_side
       t.string :second_side

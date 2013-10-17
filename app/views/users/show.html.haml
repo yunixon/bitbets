@@ -9,5 +9,6 @@
     - if @user.bets.any?
       %h3
         Bets: (#{@user.bets.count})
-      %h4
-        %ol.bets= render @bets
+      %p
+        %ol.bets
+          = render @bets

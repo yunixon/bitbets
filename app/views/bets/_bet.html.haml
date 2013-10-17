@@ -1,4 +1,14 @@
 %span.content
-  = bet.user_id.to_s + " : " + bet.win_type.to_s + " : " + bet.sum.to_s
+  = User.find(bet.user_id).name + " : "
+  - if bet.win_type == 0
+    Drawn bet
+  - elsif bet.win_type == 1
+    = Event.find(bet.event_id).first_side
+  - elsif bet.win_type == 2
+    = Event.find(bet.event_id).second_side
+  - else
+    #h1 ooooppss errrorrr...
+  
+  = " : " + bet.sum.to_s + " BTC"
 %span.timestamp
   Stacked: #{time_ago_in_words(bet.created_at)} ago.
