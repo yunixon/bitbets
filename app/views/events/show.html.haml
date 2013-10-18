@@ -18,6 +18,10 @@
         Complete: #{@event.complete}<br/>
         Complete type: #{@event.complete_type}<br/>
         Fact link: #{@event.fact_link}<br/>
+
+        .time_ticker{"dt-start-event" => @event.dt_start.strftime("%a, %e %b %Y %H:%M:%S %z")}
+          %p.dt_until_event Event begins in:
+
   .span8
     - if @event.bets.any?
       %h2
