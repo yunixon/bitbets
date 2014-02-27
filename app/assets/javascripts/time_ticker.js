@@ -1,11 +1,11 @@
-$(document).ready(function (r) {
-  var eventDateTime = $('.time_ticker').attr('dt-start-event'+r)
+$(document).ready(function () {
+  var eventDateTime = $('.time_ticker').attr('dt-start-event')
   var matchTime = Date.parse(eventDateTime);
   var currentTime = new Date();
   var untilMatch = (matchTime - currentTime)/1000;
 
   var interval = setInterval(function() {
-    var ticker = $('.dt_until_event'+r)
+    var ticker = $('.dt_until_event')
     if (untilMatch <= 0) {
       ticker.html("Betting Closed!");
       clearInterval(interval);

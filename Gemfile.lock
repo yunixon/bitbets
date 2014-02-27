@@ -48,6 +48,7 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     diff-lcs (1.2.4)
+    doge_api (0.0.5)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -165,6 +166,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails (~> 4.0.0)
+  doge_api
   haml
   jbuilder (~> 1.2)
   jquery-rails

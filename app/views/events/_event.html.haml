@@ -7,8 +7,6 @@
     .row-fluid.events
       .span12
         #{event.dt_start} 
-        .time_ticker{"dt-start-event" => event.dt_start.strftime("%a, %e %b %Y %H:%M:%S %z")}
-        %p.dt_until_event Event begins in:
         .row-fluid
           .span4
             = link_to event.first_side + " : " + event.bets.where("win_type = 1").sum("sum").to_s, new_event_bet_path(event, :wt => 1), :class => "btn btn-small btn-inverse btn-block"
@@ -19,3 +17,5 @@
             -#  
               %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 
+  .row-fluid
+    %br/

@@ -25,23 +25,9 @@
               %li
                 = link_to "Affiliate program", affiliate_path
         %ul.nav.pull-right
-          %li.navbar-text#clock
-          -#  
-            :javascript
-              var pos = document.getElementById("clock");
-              function MyClock()
-              {
-                now_time= new Date();
-                var hours=now_time.getHours();
-                var minutes=now_time.getMinutes();
-                var seconds=now_time.getSeconds();
-                if (eval(hours)<10) hours="0" + hours;
-                if (eval(minutes)< 10) minutes="0" + minutes;
-                if (seconds< 10) seconds="0" + seconds;
-                now_time = hours + ":" + minutes + ":" + seconds;
-                pos.innerHTML = now_time;
-                var t = setTimeout("MyClock()", 1000);
-              }
+          %li.navbar-text
+            .clock_ticker{"start-clock" => Time.now.strftime("%a, %e %b %Y %H:%M:%S %z")}
+              .clock Server UTC:
           - if signed_in?
             - if current_user.admin?
               %li{:class => "#{'active' if current_page?(events_path)}"}=link_to "Events", events_path
@@ -49,7 +35,7 @@
               %li
                 = link_to "Logout", signout_path, method: "delete"
             - else
-              %li.navbar-text #{current_user.name.to_s}
+              %li.navbar-text - #{current_user.name.to_s}
               %li.divider-vertical
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}

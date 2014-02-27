@@ -176,6 +176,11 @@ aside {
   }
 }
 
+/* HOME INDEX */
+.row-fluid [class*="span"] {
+  min-height: 10px;
+}
+
 /* BETS */
 
 .bets {

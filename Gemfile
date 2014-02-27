@@ -44,6 +44,7 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'devise'
+gem 'doge_api'
 
 group :test do
   gem 'selenium-webdriver'

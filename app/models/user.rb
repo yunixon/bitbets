@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-
+  validates :payment_address, length: { is: 36 } 
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }
 
   has_secure_password
   validates :password, length: { minimum: 6 }

@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   end
 
 private
- 
+
   def event_setup(the_event)
     if the_event[:complete] == nil
       the_event[:complete] = false
