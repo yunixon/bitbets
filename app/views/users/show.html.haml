@@ -1,14 +1,14 @@
 - provide(:title, "Profile | #{@user.name}")
 
 .row
-  %aside.span4
+  %aside.col-md-4
     %section
       %h2
         User is #{@user.name}
       %h3
         Depo address: #{@user.payment_address}
-        DOGE balance: #{@user.amount}
-  .span8
+        Balance (amount): #{@user.amount}
+  .col-md-8
     - if @user.bets.any?
       %h3
         Bets: (#{@user.bets.count})

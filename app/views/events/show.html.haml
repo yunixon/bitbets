@@ -1,7 +1,7 @@
 - provide(:title, "Event | #{@event.name}")
 
-.row-fluid
-  %aside.span4
+.row
+  %aside.col-md-4
     %section
       %h2
         Event:
@@ -22,7 +22,7 @@
         .time_ticker{"dt-start-event" => @event.dt_start.strftime("%a, %e %b %Y %H:%M:%S %z")}
           %p.dt_until_event Event begins in:
 
-  .span8
+  .col-md-8
     - if @event.bets.any?
       %h2
         Bets: (#{@event.bets.count})

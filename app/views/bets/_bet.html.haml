@@ -1,4 +1,4 @@
-%span.content
+.col-md-12.content
   = User.find(bet.user_id).name + " : "
   - if bet.win_type == 0
     Drawn bet
@@ -10,5 +10,5 @@
     #h1 ooooppss errrorrr...
   
   = " : " + bet.sum.to_s + " BTC"
-%span.timestamp
+.col-md-12.timestamp
   Stacked: #{time_ago_in_words(bet.created_at)} ago.

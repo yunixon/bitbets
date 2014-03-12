@@ -1,11 +1,11 @@
 - provide(:title, 'Add event')
 %h1 Add event
 .row
-  .span6.offset3
+  .col-md-6.col-md-offset-3
     = simple_form_for(@event) do |f|
       = render 'event_form', f: f
-      = f.submit "Add", class: "btn btn-primary"
+      = f.submit "Add", class: "btn btn-default btn-primary"
 
     %br/
     %br/
-    = link_to '< back to home', "/", class: 'btn btn-info'
+    = link_to '< back to home', "/", class: 'btn btn-default btn-info'

@@ -1,56 +1,55 @@
-.navbar.navbar
-  .navbar-inner
-    .container
-      %a.btn.btn-navbar{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse"}
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbar-collapse-1", "data-toggle" => "collapse", type: "Button"}
+        %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{href: root_path} Bit-bets.org
-      .nav-collapse.collapse.navbar-responsive-collapse
-        %ul.nav
-          %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
-          %li{:class => "#{'active' if current_page?(history_path)}"}=link_to "History", history_path
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Help
-              %strong.caret
-            %ul.dropdown-menu
-              %li
-                = link_to "Tutorial", tutorial_path
-              %li
-                = link_to "FAQ", faq_path
-              %li
-                = link_to "About", about_path
-              %li.divider                    
-              %li
-                = link_to "Affiliate program", affiliate_path
-        %ul.nav.pull-right
-          %li.navbar-text
-            .clock_ticker{"start-clock" => Time.now.strftime("%a, %e %b %Y %H:%M:%S %z")}
-              .clock Server UTC:
-          - if signed_in?
-            - if current_user.admin?
-              %li{:class => "#{'active' if current_page?(events_path)}"}=link_to "Events", events_path
-              %li{:class => "#{'active' if current_page?(users_path)}"}=link_to "Users", users_path
-              %li
-                = link_to "Logout", signout_path, method: "delete"
-            - else
-              %li.navbar-text - #{current_user.name.to_s}
-              %li.divider-vertical
-              %li.dropdown
-                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  Account
-                  %strong.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to "Balance", '#'
-                  %li
-                    = link_to "Profile", edit_user_path(current_user)
-                  %li
-                    = link_to "Bets", '#'
-                  %li.divider
-                  %li
-                    = link_to "Logout", signout_path, method: "delete"
+      %a.navbar-brand{href: root_path} c-bets.com
+    #navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
+        %li{:class => "#{'active' if current_page?(history_path)}"}=link_to "History", history_path
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Help
+            %strong.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Tutorial", tutorial_path
+            %li
+              = link_to "FAQ", faq_path
+            %li
+              = link_to "About", about_path
+            %li.divider                    
+            %li
+              = link_to "Affiliate program", affiliate_path
+      %ul.nav.navbar-nav.navbar-right
+        %li.navbar-text
+          .clock_ticker{"start-clock" => Time.now.strftime("%a, %e %b %Y %H:%M:%S %z")}
+            .clock Server UTC:
+        - if signed_in?
+          - if current_user.admin?
+            %li{:class => "#{'active' if current_page?(events_path)}"}=link_to "Events", events_path
+            %li{:class => "#{'active' if current_page?(users_path)}"}=link_to "Users", users_path
+            %li
+              = link_to "Logout", signout_path, method: "delete"
           - else
-            %li{:class => "#{'active' if current_page?(signin_path)}"}=link_to "Login", signin_path
-            %li{:class => "#{'active' if current_page?(signup_path)}"}=link_to "Registration", signup_path
+            %li.navbar-text - #{current_user.name.to_s}
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Account
+                %strong.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Balance", '#'
+                %li
+                  = link_to "Profile", edit_user_path(current_user)
+                %li
+                  = link_to "Bets", '#'
+                %li
+                  = link_to "Logout", signout_path, method: "delete"
+        - else
+          %li{:class => "#{'active' if current_page?(signin_path)}"}=link_to "Login", signin_path
+          %li{:class => "#{'active' if current_page?(signup_path)}"}=link_to "Registration", signup_path

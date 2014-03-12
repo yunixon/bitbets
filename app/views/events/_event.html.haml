@@ -1,21 +1,20 @@
 - if event.event_type == etype 
-  .row-fluid
-    .span6
+  .row
+    .col-md-12  
       .label #{event.name}:    
-    .span6
       .label.right #{event.fact_link}
-    .row-fluid.events
-      .span12
-        #{event.dt_start} 
-        .row-fluid
-          .span4
-            = link_to event.first_side + " : " + event.bets.where("win_type = 1").sum("sum").to_s, new_event_bet_path(event, :wt => 1), :class => "btn btn-small btn-inverse btn-block"
-          .span4
-            = link_to "Drawn bet : " + event.bets.where("win_type = 0").sum("sum").to_s, new_event_bet_path(event, :wt => 0), :class => "btn btn-small btn-inverse btn-block"
-          .span4  
-            = link_to event.second_side + " : " + event.bets.where("win_type = 2").sum("sum").to_s, new_event_bet_path(event, :wt => 2), :class => "btn btn-small btn-inverse btn-block"
-            -#  
-              %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
+  .row.events
+    .col-md-12
+      #{event.dt_start} 
+      .row
+        .col-md-4
+          = button_to event.first_side + " - " + event.bets.where("win_type = 1").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 1), :class => "btn btn-sm btn-default"
+        .col-md-4
+          = button_to "Drawn bet - " + event.bets.where("win_type = 0").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 0), :class => "btn btn-sm btn-default"
+        .col-md-4
+          = button_to event.second_side + " - " + event.bets.where("win_type = 2").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 2), :class => "btn btn-sm btn-default"
+          -#  
+            %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 
-  .row-fluid
+  .row
     %br/

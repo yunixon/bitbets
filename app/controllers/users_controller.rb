@@ -1,4 +1,5 @@
-require 'doge_api'
+#require 'doge_api'
+require 'blockchain/wallet'
 
 class UsersController < ApplicationController
 
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
       @user.payment_address = get_address 
       if @user.save
         sign_in @user
-        flash[:success] = "Welcome to BitBets! Your DOGE depo address: " + @user.payment_address
+        flash[:success] = "Welcome to BitBets! Your depo address: " + @user.payment_address
         redirect_to @user
       else
         flash[:error] = "Error: Address not assigned. Create a ticket plz"
@@ -63,8 +64,15 @@ private
   end
 
   def get_address
-    doge_api = DogeApi::DogeApi.new('ncaisu1ucu6fg186rdfmiwap1i')
-    doge_api.get_new_address :address_label => @user.id
+    #doge_api = DogeApi::DogeApi.new('ncaisu1ucu6fg186rdfmiwap1i')
+    #doge_api.get_new_address :address_label => @user.id
+    @wallet = Blockchain::Wallet.new("72227c81-2de8-46c8-82f9-a3de74bdfad1", "ZX80ZX80ZX80", nil)
+    @wallet.new_address(@user.id)
+  end
+
+  def get_balance
+    #doge_chain = DogeApi::DogeChain.new
+    #doge_chain.addressbalance @user.payment_address
   end
 
   def correct_user

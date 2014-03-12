@@ -1,13 +1,13 @@
 !!!
 %html
   %head>
-    %title Bitbats | #{yield(:title)}
+    %title c-bets.com | #{yield(:title)}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body 
     = render 'layouts/header'
-    %span
+    .col-md-12
     .container-fluid
       - flash.each do |key, value|
         %div{class: "alert alert-#{key}"}= value

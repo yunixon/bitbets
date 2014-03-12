@@ -1,5 +1,3 @@
-source 'https://rubygems.org'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -35,6 +33,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#gem 'protected_attributes'
 #gem 'thin'
 #gem 'rack'
 #gem 'rmagick'
@@ -44,7 +43,9 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'devise'
-gem 'doge_api'
+#gem 'doge_api'
+#gem 'delayed_job_active_record'
+gem 'blockchain-wallet'
 
 group :test do
   gem 'selenium-webdriver'
@@ -57,7 +58,6 @@ group :prodaction do
   gem 'rails_12factor'
 end
 
-#gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
