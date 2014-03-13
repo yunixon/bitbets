@@ -95,31 +95,6 @@ body {
 
 .label.right {float: right;}
 
-
-.btn-default {
-  text-shadow: 0 1px 0 #fff;   
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#e6e6e6));   
-  background-image: -webkit-linear-gradient(top, #ffae00, 0%, #e6e6e6, 100%);   
-  background-image: -moz-linear-gradient(top, #ffae00 0%, #e6e6e6 100%);   
-  background-image: linear-gradient(to bottom, #ffae00 0%, #e6e6e6 100%);   
-  background-repeat: repeat-x;   
-  border-color: #e0e0e0;   
-  border-color: #ccc;   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0); } /* Переопределяем цвет кнопки при наведении */ 
-.btn-default:hover {
-  background-color: gray !important;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ff0ff0), to(gray));
-  background-image: -webkit-linear-gradient(top, #a67100, 0%, gray, 100%);
-  background-image: -moz-linear-gradient(top, #a67100 0%, gray 100%);
-  background-image: linear-gradient(to bottom, #a67100 0%, gray 100%);
-  border-radius:3px; }
-
-
-.fon {
-  color: #ff0;
-  background-color: #232323;
-  clear: both;
-  @include box_sizing; }
-
 /* DEBUG */
 
 .debug_dump {
@@ -150,8 +125,8 @@ input {height: auto !important;}
 }
 
 .field_with_errors {
-  @extend .control-group !optional;
-  @extend .error !optional; }
+  @extend .form-group;
+  @extend .has-error; }
 
 /* sidebar */
 
@@ -163,7 +138,7 @@ aside {
       border: 0;
       padding-top: 0;
     }
-    span {
+    col-md-12 {
       display: block;
       margin-bottom: 3px;
       line-height: 1;
@@ -191,11 +166,6 @@ aside {
       border-bottom: 1px solid $grayMediumLight;
     }
   }
-}
-
-/* HOME INDEX */
-.row-fluid [class*="span"] {
-  min-height: 10px;
 }
 
 /* BETS */

@@ -1,10 +1,7 @@
-- provide(:title, 'All users')
-%h1 All users
-%ul.users
-  - @users.each do |user|
-    - if current_user != nil && current_user.admin?
+- provide(:title, 'ADMIN: All users')
+  %h1 ADMIN: All users
+  %ul.users
+    - @users.each do |user|    
       %li
         = link_to user.name, user
         | #{link_to "delete", user, method: :delete, data: { confirm: "You sure?" }}
-    - else
-      - flash.now[:error] = "Access denied. Please login to admin"

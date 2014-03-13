@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :signed_in_admin, only: [:index, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :edit, :create, :update, :destroy]
 
   def index
     @events = Event.all
@@ -56,19 +56,8 @@ private
     end
   end
 
-  def signed_in_admin 
-    if signed_in?
-      if current_user.admin
-        flash.now[:success] = "You are welcome mr. ADMIN"
-      else
-        flash[:error] = "Access denied. Please login to admin"
-        redirect_to root_url
-      end
-    else
-      flash[:error] = "Access denied. Please login"
-      store_location
-      redirect_to signin_url
-    end
+  def admin_user 
+    redirect_to(root_url) unless current_user.admin?
   end
   
   def complete(the_event)

@@ -8,11 +8,11 @@
       #{event.dt_start} 
       .row
         .col-md-4
-          = button_to event.first_side + " - " + event.bets.where("win_type = 1").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 1), :class => "btn btn-sm btn-default"
+          = link_to event.first_side + " - " + event.bets.where("win_type = 1").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 1), :class => "btn btn-sm btn-default"
         .col-md-4
-          = button_to "Drawn bet - " + event.bets.where("win_type = 0").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 0), :class => "btn btn-sm btn-default"
+          = link_to "Drawn bet - " + event.bets.where("win_type = 0").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 0), :class => "btn btn-sm btn-default"
         .col-md-4
-          = button_to event.second_side + " - " + event.bets.where("win_type = 2").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 2), :class => "btn btn-sm btn-default"
+          = link_to event.second_side + " - " + event.bets.where("win_type = 2").sum("sum").to_s + " btc", new_event_bet_path(event, :wt => 2), :class => "btn btn-sm btn-default"
           -#  
             %a.btn.btn-small.btn-inverse.btn-block{"data-toggle" => "modal", href: "#BetModal", role: "button"} #{event.second_side}
 

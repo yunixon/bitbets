@@ -5,15 +5,15 @@ class BetsController < ApplicationController
 
   def new
     if @event.complete == false
-      @bet = @event.bets.build
+      @bet = Bet.new
     else
-      flash[:error] = "Event is completed"
+      flash[:danger] = "Event is completed"
       redirect_to history_path
     end
   end
   
   def create
-    @bet =  @event.bets.build(bet_params) 
+    @bet = @event.bets.build(bet_params) 
     @bet.user_id = current_user.id
     if @bet.save
       flash[:success] = "Bet is added!"

@@ -1,8 +1,7 @@
 - provide(:title, 'Sign up')
-.conteiner-fluid
-  .row
-    .col-md-4.col-md-offset-4.fon
-      %h1 Registration user
-      = simple_form_for(@user) do |f|
-        = render 'form', f: f
-        = f.submit "Registration", class: "btn btn-default btn-primary"
+.conteiner-fluid 
+  .col-md-4.col-md-offset-4
+    %h1 Registration user
+    = simple_form_for(@user) do |f|
+      = render 'form', f: f
+      = f.submit "Registration", class: "btn btn-default btn-primary" 

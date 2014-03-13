@@ -87,5 +87,6 @@ SimpleForm.setup do |config|
   # Check the Bootstrap docs (http://getbootstrap.com/)
   # to learn about the different styles for forms and inputs,
   # buttons and other elements.
+  config.browser_validations = false
   config.default_wrapper = :bootstrap3
 end
